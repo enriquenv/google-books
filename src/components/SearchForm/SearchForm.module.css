@@ -1,0 +1,15 @@
+.form {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .input {
+    padding: 10px;
+    margin-right: 10px;
+    min-width: 250px;
+  }
+  
+  .button {
+    padding: 10px 15px;
+  }
