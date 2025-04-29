@@ -1,9 +1,20 @@
 import React from 'react';
 import styles from './SearchForm.module.css';
 
-function SearchForm() {
+function SearchForm({ onSearch }) {
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const query = formData.get('search');
+    if (query) {
+      onSearch(query);
+    }
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input
         type="text"
         name="search"
