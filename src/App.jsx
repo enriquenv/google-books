@@ -10,6 +10,25 @@ function App() {
   const handleSearch = (query) => {
     console.log('Search term query:', query);
     setSearchTerm(query);
+
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
+
+    fetch(apiUrl)
+      .then(response => {
+      if (response.ok) {
+      return response.json();
+      } else {
+      throw new Error(`API response error: ${response.status}`);
+      }
+   })
+      .then(data => {
+        console.log('Whole response:', data);
+        if (data.items) {
+          console.log('Response.items:', data.items);
+        } else {
+          console.log('No books found.');
+        }
+      })
   };
 
   return (
