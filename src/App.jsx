@@ -5,23 +5,21 @@ import BookGrid from './components/BookGrid/BookGrid';
 import './App.css';
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [books, setBooks] = useState([]);
 
   const handleSearch = (query) => {
-    console.log('Search term query:', query);
-    setSearchTerm(query);
-
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
 
     fetch(apiUrl)
       .then(response => {
-      if (response.ok) {
-      return response.json();
-      } else {
-      throw new Error(`API response error: ${response.status}`);
-      }
-   })
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(`API response error: ${response.status}`);
+        }
+      })
       .then(data => {
+        setBooks(data.items || []);
         console.log('Whole response:', data);
         if (data.items) {
           console.log('Response.items:', data.items);
@@ -29,13 +27,17 @@ function App() {
           console.log('No books found.');
         }
       })
+      .catch(error => {
+        console.error("Fetch error:", error);
+        setBooks([]);
+      });
   };
 
   return (
     <div className="app">
       <Header />
       <SearchForm onSearch={handleSearch} />
-      <BookGrid />
+      <BookGrid books={books} />
     </div>
   );
 }
