@@ -2,5 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 18px;
     padding: 20px 0;
+  }
+  
+  .noBooksMessage {
+    color: #bdbdbd;
+    font-size: 1.1em;
+    text-align: center;
+    width: 100%;
   }

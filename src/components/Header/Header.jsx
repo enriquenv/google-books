@@ -4,7 +4,9 @@ import styles from './Header.module.css';
 function Header() {
   return (
     <header className={styles.header}>
-      <h1>Google Books Search</h1>
+      <a href="/" className={styles.titleLink}>
+        <h1>Google Books Search</h1>
+      </a>
     </header>
   );
 }

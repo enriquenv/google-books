@@ -15,7 +15,7 @@ function BookCard({ book }) {
       <img src={imageUrl} alt={`Cover of ${title}`} className={styles.image} />
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.authors}>By: {authors}</p>
-      <summary className={styles.description}>{description}</summary>
+      <p className={styles.description}>{description}</p>
     </article>
   );
 }

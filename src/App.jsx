@@ -5,10 +5,11 @@ import BookGrid from './components/BookGrid/BookGrid';
 import './App.css';
 
 function App() {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState(null);
 
   const handleSearch = (query) => {
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
+    setBooks([]);
 
     fetch(apiUrl)
       .then(response => {
